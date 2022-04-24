@@ -84,6 +84,17 @@ class User extends Authenticatable
     ];
 
     /**
+     * @return bool
+     */
+    public function isManager(): bool
+    {
+        if ($this->role == self::ROLE['manager']) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function applications(): HasMany
