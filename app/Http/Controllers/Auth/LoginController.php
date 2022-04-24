@@ -21,16 +21,16 @@ class LoginController extends Controller
 
     /**
      * @param LoginRequest $request
-     * @return \Illuminate\View\View|\Illuminate\Http\RedirectResponse
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function login(LoginRequest $request): View|RedirectResponse
+    public function login(LoginRequest $request): RedirectResponse
     {
         $data = $request->validated();
         if (auth()->attempt($data)) {
             if (auth()->user()->role == User::ROLE['manager']) {
-                return view('application.index');
+                return redirect()->route('application.index');
             }
-            return view('application.form');
+            return redirect()->route('application.form');
         }
         return back()->withErrors([
             'message' => 'Incorrect email or password.'
