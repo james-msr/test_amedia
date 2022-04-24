@@ -4,9 +4,24 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
+/**
+ * @package App\Models
+ * @property int $user_id
+ * @property string $theme
+ * @property string $message
+ * @property string $file_path
+ * @property string $status
+ * @property \Carbon\Carbon $created_at
+ * @property \Carbon\Carbon $updated_at
+ * @property User $user
+ */
 class Application extends Model
 {
+    /**
+     * @const array<string, string>
+     */
     const STATUS = [
         'not_checked' => 'Not checked',
         'checked' => 'Checked'
@@ -43,4 +58,12 @@ class Application extends Model
      * @var array<string, string>
      */
     protected $casts = [];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
 }
