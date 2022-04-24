@@ -12,7 +12,7 @@ use Illuminate\View\View;
 class RegisterController extends Controller
 {
     /**
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return \Illuminate\View\View
      */
     public function registerForm(): View
     {
@@ -25,7 +25,7 @@ class RegisterController extends Controller
      */
     public function register(RegisterRequest $request): RedirectResponse
     {
-        $data = $request->all();
+        $data = $request->validated();
         $user = User::query()->create([
             'first_name' => $data['first_name'],
             'last_name' => $data['last_name'],
