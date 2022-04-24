@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,6 +16,11 @@ use App\Http\Controllers\Auth\RegisterController;
 */
 
 Route::get('/register', [RegisterController::class, 'registerForm'])->name('register.form');
-Route::post('register', [RegisterController::class, 'register'])->name('register');
+Route::post('/register', [RegisterController::class, 'register'])->name('register');
+
+Route::get('/login', [LoginController::class, 'loginForm'])->name('login.form');
+Route::post('/login', [LoginController::class, 'login'])->name('login');
 
 Route::get('/application-form')->name('application.form');
+
+Route::get('/applications')->name('application.index');
