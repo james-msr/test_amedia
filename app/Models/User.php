@@ -13,14 +13,39 @@ class User extends Authenticatable
     use HasApiTokens, HasFactory, Notifiable;
 
     /**
+     * @const array<string, string>
+     */
+    const GENDER = [
+        'male' => 'male',
+        'female' => 'female'
+    ];
+
+    /**
+     * @const array<string, string>
+     */
+    const ROLE = [
+        'manager' => 'manager',
+        'user' => 'user'
+    ];
+
+    /**
+     * @var string
+     */
+    protected $table = 'users';
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'first_name',
+        'last_name',
+        'phone',
         'email',
         'password',
+        'gender',
+        'role'
     ];
 
     /**
