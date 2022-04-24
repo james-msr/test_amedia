@@ -20,7 +20,7 @@ class RegisterController extends Controller
     }
 
     /**
-     * @param Request $request
+     * @param RegisterRequest $request
      * @return \Illuminate\Http\RedirectResponse
      */
     public function register(RegisterRequest $request): RedirectResponse
