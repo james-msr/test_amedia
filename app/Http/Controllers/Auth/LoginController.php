@@ -27,7 +27,7 @@ class LoginController extends Controller
     {
         $data = $request->validated();
         if (auth()->attempt($data)) {
-            if (auth()->user()->role == User::ROLE['manager']) {
+            if (auth()->user()->isManager()) {
                 return redirect()->route('application.index');
             }
             return redirect()->route('application.form');
