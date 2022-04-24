@@ -25,7 +25,7 @@ class LoginController extends Controller
      */
     public function login(LoginRequest $request): View|RedirectResponse
     {
-        $data = $request->all();
+        $data = $request->validated();
         if (auth()->attempt($data)) {
             if (auth()->user()->role == User::ROLE['manager']) {
                 return view('application.index');
