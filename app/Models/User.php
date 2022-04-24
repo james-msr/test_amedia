@@ -22,6 +22,7 @@ use Laravel\Sanctum\HasApiTokens;
  * @property string $role
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
+ * @property bool $isManager
  * @property \Illuminate\Database\Eloquent\Collection $applications
  */
 class User extends Authenticatable
