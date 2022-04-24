@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\LoginRequest;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -19,10 +20,10 @@ class LoginController extends Controller
     }
 
     /**
-     * @param Request $request
+     * @param LoginRequest $request
      * @return \Illuminate\View\View|\Illuminate\Http\RedirectResponse
      */
-    public function login(Request $request): View|RedirectResponse
+    public function login(LoginRequest $request): View|RedirectResponse
     {
         $data = $request->all();
         if (auth()->attempt($data)) {
