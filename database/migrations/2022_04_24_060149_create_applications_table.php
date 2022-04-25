@@ -21,7 +21,8 @@ class CreateApplicationsTable extends Migration
             $table->text('message');
             $table->string('file_path');
             $table->string('file_name');
-            $table->enum('status', array_values(\App\Models\Application::STATUS));
+            $table->enum('status', array_values(\App\Models\Application::STATUS))
+                    ->default(\App\Models\Application::STATUS['not_checked']);
             $table->timestamps();
         });
     }
