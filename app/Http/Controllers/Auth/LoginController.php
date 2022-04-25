@@ -32,8 +32,8 @@ class LoginController extends Controller
             }
             return redirect()->route('application.create');
         }
-        return back()->withErrors([
-            'message' => 'Incorrect email or password.'
+        return back()->with([
+            'error' => 'Incorrect email or password.'
         ]);
     }
 }

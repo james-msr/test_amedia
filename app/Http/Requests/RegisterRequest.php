@@ -49,7 +49,7 @@ class RegisterRequest extends FormRequest
     protected function failedValidation(Validator $validator): \Illuminate\Http\RedirectResponse
     {
         $error = $validator->errors()->first();
-        return redirect()->back()->withErrors([
+        return redirect()->back()->with([
             'error' => $error
         ]);
     }
