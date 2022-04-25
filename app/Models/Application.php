@@ -66,4 +66,10 @@ class Application extends Model
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
+
+    public function check()
+    {
+        $this->status = self::STATUS['checked'];
+        $this->save();
+    }
 }
