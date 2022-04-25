@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property string $theme
  * @property string $message
  * @property string $file_path
+ * @property string $file_name
  * @property string $status
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
@@ -42,7 +43,8 @@ class Application extends Model
         'theme',
         'message',
         'file_path',
-        'status'
+        'file_name',
+        'status',
     ];
 
     /**
