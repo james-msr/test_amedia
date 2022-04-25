@@ -30,7 +30,7 @@ class LoginController extends Controller
             if (auth()->user()->isManager()) {
                 return redirect()->route('application.index');
             }
-            return redirect()->route('application.form');
+            return redirect()->route('application.create');
         }
         return back()->withErrors([
             'message' => 'Incorrect email or password.'

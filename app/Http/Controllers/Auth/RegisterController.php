@@ -37,6 +37,6 @@ class RegisterController extends Controller
         ]);
         auth()->login($user);
 
-        return redirect()->route('application.form');
+        return redirect()->route('application.create');
     }
 }
