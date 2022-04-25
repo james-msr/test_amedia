@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Http\Exceptions\HttpResponseException;
+use Illuminate\Http\JsonResponse;
 
 class LoginRequest extends FormRequest
 {
@@ -13,7 +13,7 @@ class LoginRequest extends FormRequest
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
         return true;
     }
@@ -39,20 +39,14 @@ class LoginRequest extends FormRequest
     }
 
     /**
-     * Handle a failed validation attempt.
-     *
-     * @param  \Illuminate\Contracts\Validation\Validator  $validator
-     * @return void
-     *
-     * @throws \Illuminate\Http\Exceptions\HttpResponseException
+     * @param Validator $validator
+     * @return \Illuminate\Http\JsonResponse
      */
-    protected function failedValidation(Validator $validator)
+    protected function failedValidation(Validator $validator): JsonResponse
     {
         $error = $validator->errors()->first();
-        throw new HttpResponseException(
-            response()->json([
-                'error' => $error
-            ])
-        );
+        return response()->json([
+            'error' => $error
+        ]);
     }
 }
