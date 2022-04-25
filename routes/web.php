@@ -22,7 +22,8 @@ Route::post('/register', [RegisterController::class, 'register'])->name('registe
 Route::get('/login', [LoginController::class, 'loginForm'])->name('login.form');
 Route::post('/login', [LoginController::class, 'login'])->name('login');
 
-Route::get('/application-form')->name('application.form');
+Route::get('/application/create', [ApplicationController::class, 'create'])->name('application.create');
+Route::post('/application/store', [ApplicationController::class, 'store'])->name('application.store');
 
 Route::get('/applications', [ApplicationController::class, 'index'])->name('application.index');
 Route::get('/applications/data', [ApplicationController::class, 'applicationData']);
