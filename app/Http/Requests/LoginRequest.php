@@ -40,12 +40,12 @@ class LoginRequest extends FormRequest
 
     /**
      * @param Validator $validator
-     * @return \Illuminate\Http\JsonResponse
+     * @return \Illuminate\Http\RedirectResponse
      */
-    protected function failedValidation(Validator $validator): JsonResponse
+    protected function failedValidation(Validator $validator): \Illuminate\Http\RedirectResponse
     {
         $error = $validator->errors()->first();
-        return response()->json([
+        return redirect()->back()->withErrors([
             'error' => $error
         ]);
     }
