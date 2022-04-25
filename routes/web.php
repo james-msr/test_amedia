@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\ApplicationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,4 +24,6 @@ Route::post('/login', [LoginController::class, 'login'])->name('login');
 
 Route::get('/application-form')->name('application.form');
 
-Route::get('/applications')->name('application.index');
+Route::get('/applications', [ApplicationController::class, 'index'])->name('application.index');
+Route::get('/applications/data', [ApplicationController::class, 'applicationData']);
+Route::post('/application/check', [ApplicationController::class, 'check']);
