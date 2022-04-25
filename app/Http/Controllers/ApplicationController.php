@@ -78,7 +78,9 @@ class ApplicationController extends Controller
             $date = $lastApplication->created_at;
             $diff = $date->diffInMinutes(Carbon::now());
             if ($diff < 24) {
-                return redirect()->back()->with('message', 'You can send only 1 application in 24 hours');
+                return redirect()->back()->with([
+                    'error' => 'You can send only 1 application in 24 hours'
+                ]);
             }
         }
         $data['theme'] = $request->get('theme');
@@ -87,6 +89,8 @@ class ApplicationController extends Controller
         $data['file_name'] = $data['user_id'].'-'.Carbon::now()->toDateString();
         $data['file_path'] = $request->file('file')->storeAs('files', $data['file_name']);
         Application::query()->create($data);
-        return redirect()->back()->with('message', 'Application has been sent successfully');
+        return redirect()->back()->with([
+            'error'=> 'Application has been sent successfully'
+        ]);
     }
 }
